@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" objects that handles all default RestFul API actions for Amenities"""
+"Objects that handles all default RestFul API"
 from models.amenity import Amenity
 from models import storage
 from api.v1.views import app_views
@@ -10,9 +10,6 @@ from flasgger.utils import swag_from
 @app_views.route('/amenities', methods=['GET'], strict_slashes=False)
 @swag_from('documentation/amenity/all_amenities.yml')
 def get_amenities():
-    """
-    Retrieves a list of all amenities
-    """
     all_amenities = storage.all(Amenity).values()
     list_amenities = []
     for amenity in all_amenities:
@@ -36,9 +33,6 @@ def get_amenity(amenity_id):
                  strict_slashes=False)
 @swag_from('documentation/amenity/delete_amenity.yml', methods=['DELETE'])
 def delete_amenity(amenity_id):
-    """
-    Deletes an amenity  Object
-    """
 
     amenity = storage.get(Amenity, amenity_id)
 
@@ -54,9 +48,6 @@ def delete_amenity(amenity_id):
 @app_views.route('/amenities', methods=['POST'], strict_slashes=False)
 @swag_from('documentation/amenity/post_amenity.yml', methods=['POST'])
 def post_amenity():
-    """
-    Creates an amenity
-    """
     if not request.get_json():
         abort(400, description="Not a JSON")
 
@@ -73,9 +64,6 @@ def post_amenity():
                  strict_slashes=False)
 @swag_from('documentation/amenity/put_amenity.yml', methods=['PUT'])
 def put_amenity(amenity_id):
-    """
-    Updates an amenity
-    """
     if not request.get_json():
         abort(400, description="Not a JSON")
 

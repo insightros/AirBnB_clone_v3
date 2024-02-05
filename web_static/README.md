@@ -1,1 +1,1 @@
-AirBnB Clone
+** Web Static AirBnB
